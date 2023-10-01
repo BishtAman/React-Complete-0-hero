@@ -1,8 +1,4 @@
-import { Component } from "react";
-
-class Card extends Component{
-    render(){
-        const {name, email, id} = this.props
+const Card = ({name, email, id}) =>{
         return(
             <div key={id} className="card-container">
               <img
@@ -14,6 +10,5 @@ class Card extends Component{
               </div>
         )
     }
-}
 
 export default Card
