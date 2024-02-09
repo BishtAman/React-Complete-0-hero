@@ -1,11 +1,11 @@
 import FormInput from "../form-input/form-input.component";
 import "./sign-in-form.styles.scss";
-import { Fragment, useState, useContext } from "react";
-import { UserContext } from "../../contexts/user.context";
+import { Fragment, useState } from "react";
+
 import {
   signInWithGooglePopup,
   createUserDocumentFromAuth,
-  signInAuthUserWithEmailAndPassword
+  signInAuthUserWithEmailAndPassword,
 } from "../../utils/firebase/firebase.utils";
 import Button from "../button/button.component";
 const defaultFormFields = {
@@ -16,18 +16,22 @@ const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
   console.log(formFields);
-const {setCurrentUser} = useContext(UserContext)
+
+
+
+
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value }); // here we are spreading up the object and changing only the specific field
   };
 
-
   const signInWithGoogle = async () => {
-    const { user } = await signInWithGooglePopup(); //when we choose account through google popup we receive the user object
-    await createUserDocumentFromAuth(user); // passing it to firebase utils
-  };
+ await signInWithGooglePopup(); //when we choose account through google popup we receive the user object
 
+
+   
+  };
 
   const clearFormFields = () => {
     setFormFields(defaultFormFields);
@@ -37,23 +41,25 @@ const {setCurrentUser} = useContext(UserContext)
     event.preventDefault();
 
     try {
-        const {user} = await signInAuthUserWithEmailAndPassword(email,password)
-        setCurrentUser(user)
-        console.log(user)
+      const { user } = await signInAuthUserWithEmailAndPassword(
+        email,
+        password
+      );
+
+      console.log(user);
       clearFormFields();
     } catch (error) {
-        switch(error.code){
-            case 'auth/wrong-password':
-                alert('incorrect password for email')
-                break;
-            case 'auth/user-not-found':
-                alert('no user associated with this email')
-                break;
-            default:
-                console.log(error)
-        }
+      switch (error.code) {
+        case "auth/wrong-password":
+          alert("incorrect password for email");
+          break;
+        case "auth/user-not-found":
+          alert("no user associated with this email");
+          break;
+        default:
+          console.log(error);
+      }
     }
-
   };
   return (
     <Fragment>
@@ -81,7 +87,11 @@ const {setCurrentUser} = useContext(UserContext)
 
           <div className="buttons-container">
             <Button type="submit">Sign In</Button>
-            <Button type="button" buttonType="google" onClick={signInWithGoogle}>
+            <Button
+              type="button"
+              buttonType="google"
+              onClick={signInWithGoogle}
+            >
               Google sign in
             </Button>
           </div>
