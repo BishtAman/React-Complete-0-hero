@@ -14,7 +14,7 @@ const Shop = () => {
           <ProductCard key={products.id} product={product}/>
         );
       })}
-    </div>
+    </div> 
   );
 };
 
