@@ -10,7 +10,7 @@ import { CartContext } from "../../contexts/cart.context";
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
   const {isCartOpen} =  useContext(CartContext)
-  console.log(currentUser);
+  // console.log(currentUser);
 
   const signOutHandler = async () => {
     await signOutUser();

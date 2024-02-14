@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@300&display=swap");
+
+.category-title {
+  font-family: "Sofia Sans Condensed", sans-serif;
+  font-size: 38px;
+  margin-bottom: 28px;
+  text-align: center;
+}
+.shop-category-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 20px;
+  row-gap: 50px;
+}
