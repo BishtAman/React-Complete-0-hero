@@ -74,6 +74,7 @@ useEffect(()=>{
   };
   const clearItemToCart = (cartItemToRemove) => {
     setCartItems(clearCartItem(cartItems, cartItemToRemove));
+    alert('Item has been removed from the cart')
   };
 
   const value = {
