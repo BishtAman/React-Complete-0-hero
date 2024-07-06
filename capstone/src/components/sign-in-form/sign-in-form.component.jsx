@@ -7,17 +7,16 @@ import {
   signInAuthUserWithEmailAndPassword,
 } from "../../utils/firebase/firebase.utils";
 import Button from "../button/button.component";
+
 const defaultFormFields = {
   email: "",
   password: "",
 };
+
 const SignInForm = () => {
+
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
-  console.log(formFields);
-
-
-
 
 
   const handleChange = (event) => {
@@ -26,10 +25,7 @@ const SignInForm = () => {
   };
 
   const signInWithGoogle = async () => {
- await signInWithGooglePopup(); //when we choose account through google popup we receive the user object
-
-
-   
+    await signInWithGooglePopup(); //when we choose account through google popup we receive the user object
   };
 
   const clearFormFields = () => {
